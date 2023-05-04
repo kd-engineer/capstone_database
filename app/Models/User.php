@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Friend;
+use App\Models\Post;
+use App\Models\Like;
+use App\Models\FriendRequest;
 
 class User extends Authenticatable
 {
@@ -18,7 +23,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'profile_picture',
+        'gender',
+        'birthdate',
         'email',
         'password',
     ];
@@ -41,4 +50,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function friends(): HasMany {
+        return $this->hasMany(Friend::class);
+    }
+
+    public function posts(): HasMany {
+        return $this->hasMany(Post::class)->orderBy("created_at", "desc");
+    }
+
+    public function likes(): HasMany {
+        return $this->hasMany(Like::class);
+    }
+
+    public function friendRequests(): HasMany {
+        return $this->hasMany(FriendRequest::class)->orderBy('created_at', 'desc');
+    }
 }
