@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name', 20);
             $table->string('email')->unique();
             $table->string('profile_picture', 50);
-            $table->enum('gender', ['Boy', 'Girl', 'Other', 'Prefer not to say']);
+            $table->enum('gender', ['Boy', 'Girl', 'Other']);
             $table->date('birthdate');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

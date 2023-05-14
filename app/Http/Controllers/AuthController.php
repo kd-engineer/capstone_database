@@ -17,7 +17,7 @@ class AuthController extends Controller
             'birthdate' => 'required|date_format:Y-m-d',
             'profile_picture' => 'nullable|string',
             'email' => 'required|string|unique:users|email',
-            'password' => 'required|string|confirmed',
+            'password' => 'required|string',
             ]);
 
         $user = User::create([
