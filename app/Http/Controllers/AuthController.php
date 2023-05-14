@@ -18,7 +18,7 @@ class AuthController extends Controller
             'profile_picture' => 'nullable|string',
             'email' => 'required|string|unique:users|email',
             'password' => 'required|string|confirmed',
-            ]);
+        ]);
 
         $user = User::create([
             'first_name' => $fields['first_name'],
