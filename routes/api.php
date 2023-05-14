@@ -23,9 +23,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::post("register", [AuthController::class, "register"]);
-Route::post("login", [AuthController::class, "login"]);
+Route::post("/register", [AuthController::class, "register"]);
+Route::post("/login", [AuthController::class, "login"]);
 Route::post("/upload", [ImageController::class, "upload"]);
+Route::get('/image/{image}', [ImageController::class, 'getImage']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::resource("posts", PostController::class);

@@ -19,6 +19,7 @@ class Post extends Model
         "user_id",
         "post_id",
         "body",
+        "media",
     ];
 
     public function user(): BelongsTo {
